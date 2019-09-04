@@ -17,7 +17,7 @@ avgPerf = 0
 # To avoid unlucky outcomes try running the code several times
 numTrials = 5
 # 30 second timeout for each run
-timeout = 5
+timeout = 30
 # Try checking for timeout every 100 iterations
 spacing = 100
 
