@@ -51,7 +51,7 @@ def solver( X, y, C, timeout, spacing ):
 #  Non Editable Region Ending  #
 ################################
 	
-	alpha = np.zeros((y.size ,) )
+	alpha = np.ones((y.size ,))/512
 	# alpha = np.random.randint(2,size=(y.size,))
 	alphay = np.multiply( alpha, y )
 	w = X.T.dot( alphay )

@@ -24,20 +24,8 @@ def stepFunc( eta, t ):
 
 
 def doGD( theta, y, X, C, t):
-    # objValSeries = np.zeros( (horizon,) )
-    # timeSeries = np.zeros( (horizon,) )
-    # totTime = 0
-    # for t in range( horizon ):
-    # tic = tm.perf_counter()
     delta = gradFunc( theta , y, X, C)
-    # eta=1/(C**C)
     theta = theta - stepFunc(eta,t+1 ) * delta
-
-        # toc = tm.perf_counter()
-        # totTime = totTime + (toc - tic)
-        # objValSeries[t] = getCSVMObjVal( cumulative/(t+2) )
-        # timeSeries[t] = totTime
-    # return (cumulative/(horizon+1), objValSeries, timeSeries)
     return theta
 
 ################################
@@ -59,7 +47,7 @@ def solver( X, y, C, timeout, spacing ):
 
 	# You may reinitialize w, b to your liking here
 	# You may also define new variables here e.g. eta, B etc
-	theta = w
+	theta_SGD = w
 	cumulative = w
 
 ################################
@@ -77,7 +65,7 @@ def solver( X, y, C, timeout, spacing ):
 ################################
 #  Non Editable Region Ending  #
 ################################
-		theta_SGD = doGD(theta, y, X, C, t)
+		theta_SGD = doGD(theta_SGD, y, X, C, t)
 		cumulative = cumulative + theta_SGD
 		w = cumulative/(t+1)
 		# Write all code to perform your method updates here within the infinite while loop
